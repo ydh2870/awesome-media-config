@@ -22,4 +22,6 @@ spring:
       enabled: true      
 
 logging:
-  path: ../log/${spring.application.name}      
+  path: ../log/${spring.application.name}    
+
+name: ydh-defalut
