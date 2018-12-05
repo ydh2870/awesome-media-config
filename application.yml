@@ -1,0 +1,23 @@
+server:
+  port: 9999
+  
+management:
+  security:
+    enabled: false
+    
+spring:
+  application:
+    name: awesome-media-apigateway
+
+zuul:
+  ignored-services: "*"
+  routes:
+    awesome-media-backend:
+      path: /awesome-media/**
+      url: http://localhost:8090
+    ribbon-test:
+      path: /ribbon-test/**
+
+ribbon-test:
+  ribbon:
+      listOfServers: google.com, naver.com      
