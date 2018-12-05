@@ -1,23 +1,25 @@
 server:
-  port: 9999
-  
+  port: 8090
+
 management:
   security:
-    enabled: false
-    
+    enabled: false    
+
+promotion: action
+
 spring:
   application:
-    name: awesome-media-apigateway
+    name: awesome-media-backend
+  datasource:
+    initialize: true
+    platform: h2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:mediadb;
+    username: sa
+    password: null
+  h2:
+    console:
+      enabled: true      
 
-zuul:
-  ignored-services: "*"
-  routes:
-    awesome-media-backend:
-      path: /awesome-media/**
-      url: http://localhost:8090
-    ribbon-test:
-      path: /ribbon-test/**
-
-ribbon-test:
-  ribbon:
-      listOfServers: google.com, naver.com      
+logging:
+  path: ../log/${spring.application.name}      
